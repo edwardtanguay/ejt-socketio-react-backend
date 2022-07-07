@@ -10,16 +10,16 @@ const port = 3377;
 
 app.get('/', (req, res) => {
 	res.send('<h1>Socket.io backend</h1>')
-})
+});
 
 io.on('connection', (socket) => {
 	console.log('a user connected');
 	socket.on('disconnect', () => {
 		console.log('USER DISCONNECTED');
-	})
+	});
 });
 
 http.listen(port, () => {
 	console.log(`listening on port http://localhost:${port}`);
-})
+});
 
