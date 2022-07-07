@@ -1,6 +1,10 @@
-const app = require('express')();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http, {
+import {createServer} from 'http';
+import { Server } from 'socket.io';
+import express from 'express';
+
+const app = express();
+const httpServer = createServer();
+const io = new Server(httpServer, {
 	cors: {
 		origins: ['http://localhost:3378']
 	}
@@ -19,7 +23,7 @@ io.on('connection', (socket) => {
 	});
 });
 
-http.listen(port, () => {
+httpServer.listen(port, () => {
 	console.log(`listening on port http://localhost:${port}`);
 });
 
