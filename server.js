@@ -1,4 +1,4 @@
-const app = require('express');
+const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
 	cors: {
@@ -15,11 +15,11 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
 	console.log('a user connected');
 	socket.on('disconnect', () => {
-		clg('user disconnected');
+		console.log('user disconnected');
 	})
 });
 
-express.listen(port, () => {
+http.listen(port, () => {
 	console.log(`listening on port http://localhost:${port}`);
 })
 
