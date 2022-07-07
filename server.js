@@ -4,11 +4,7 @@ import express from 'express';
 
 const app = express();
 const httpServer = createServer();
-const io = new Server(httpServer, {
-	cors: {
-		origins: ['http://localhost:3378']
-	}
-});
+const io = new Server(httpServer, {cors: {} });
 
 const port = 3377;
 
